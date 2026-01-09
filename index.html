@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خريطة أرض أوو التفاعلية | Adventure Time</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- العنوان الرئيسي -->
+        <header>
+            <h1><i class="fas fa-map"></i> خريطة أرض أوو التفاعلية</h1>
+            <p class="subtitle">اضغط على أي مكان لتستكشف عالم Adventure Time! <span class="math">→</span></p>
+        </header>
+
+        <!-- الخريطة الرئيسية -->
+        <div class="map-container">
+            <div class="map" id="ooo-map">
+                <!-- النقاط التفاعلية على الخريطة -->
+                <div class="location-point" id="candy-kingdom" style="top: 30%; left: 40%;">
+                    <div class="point"></div>
+                    <div class="point-label">مملكة الحلوى</div>
+                </div>
+
+                <div class="location-point" id="tree-fort" style="top: 45%; left: 60%;">
+                    <div class="point"></div>
+                    <div class="point-label">بيت فين وجايك</div>
+                </div>
+
+                <div class="location-point" id="ice-kingdom" style="top: 15%; left: 20%;">
+                    <div class="point"></div>
+                    <div class="point-label">مملكة الجليد</div>
+                </div>
+
+                <div class="location-point" id="fire-kingdom" style="top: 70%; left: 75%;">
+                    <div class="point"></div>
+                    <div class="point-label">أرض النار</div>
+                </div>
+
+                <div class="location-point" id="nightosphere" style="top: 80%; left: 25%;">
+                    <div class="point"></div>
+                    <div class="point-label">عالم الظلام</div>
+                </div>
+            </div>
+
+            <!-- لوحة المعلومات الجانبية -->
+            <div class="info-panel" id="info-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-info-circle"></i> معلومات الموقع</h2>
+                    <button class="close-btn" id="close-btn">&times;</button>
+                </div>
+                <div class="panel-content">
+                    <div class="default-message">
+                        <img src="https://cdn-icons-png.flaticon.com/512/744/744922.png" alt="Adventure Time" class="default-icon">
+                        <h3>مرحباً في أرض أوو! 🌈</h3>
+                        <p>اضغط على أي نقطة ملونة على الخريطة لتبدأ مغامرتك!</p>
+                        <p class="fun-fact">حقيقة ممتعة: أرض أوو هي عالم ما بعد نهاية العالم، مليئة بالسحر والغرابة!</p>
+                    </div>
+                    <div class="location-info" id="location-info">
+                        <!-- سيتم ملؤه بواسطة JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفاصل الغريب -->
+        <div class="weird-divider">
+            <span>✧･ﾟ: *✧･ﾟ:* رياضيّ! *:･ﾟ✧*:･ﾟ✧</span>
+        </div>
+
+        <!-- قسم المفضلة -->
+        <div class="favorites">
+            <h2><i class="fas fa-star"></i> شخصيات سريعة</h2>
+            <div class="characters-grid">
+                <div class="character-card" data-character="finn">
+                    <div class="character-icon finn"></div>
+                    <h3>فين</h3>
+                    <p>البطل البشري</p>
+                </div>
+                <div class="character-card" data-character="jake">
+                    <div class="character-icon jake"></div>
+                    <h3>جايك</h3>
+                    <p>الكلب السحري</p>
+                </div>
+                <div class="character-card" data-character="pb">
+                    <div class="character-icon pb"></div>
+                    <h3>الأميرة صمغ</h3>
+                    <p>عالمة مملكة الحلوى</p>
+                </div>
+                <div class="character-card" data-character="ice-king">
+                    <div class="character-icon ice-king"></div>
+                    <h3>ملك الثلج</h3>
+                    <p>... يبحث عن حب</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- تذييل الصفحة -->
+        <footer>
+            <p>موقع معجبين غير رسمي لـ Adventure Time | صنع بـ <i class="fas fa-heart"></i> ZOUHAIR ADRDOUR<i class="fas fa-crown"></i></p>
+            <p class="copyright">جميع حقوق Adventure Time تعود لـ Pendleton Ward وCartoon Network</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+/* أنماط عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #a2d2ff, #ffafcc, #cdb4db);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 5px solid #ffafcc;
+}
+
+/* العنوان */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px dashed #a2d2ff;
+}
+
+h1 {
+    color: #ff006e;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 0 #ffd166;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    background-color: #ffd166;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+/* حاوية الخريطة */
+.map-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.map {
+    flex: 3;
+    min-width: 300px;
+    height: 500px;
+    background: 
+        radial-gradient(circle at 20% 30%, #ffafcc88 10%, transparent 20%),
+        radial-gradient(circle at 70% 60%, #a2d2ff88 15%, transparent 25%),
+        radial-gradient(circle at 40% 80%, #cdb4db88 12%, transparent 22%),
+        linear-gradient(135deg, #bde0fe, #ffc8dd);
+    border-radius: 15px;
+    position: relative;
+    border: 8px solid #ffd166;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* النقاط على الخريطة */
+.location-point {
+    position: absolute;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.location-point:hover .point {
+    transform: scale(1.5);
+    box-shadow: 0 0 20px currentColor;
+}
+
+.point {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 0 auto 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.point::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+.point-label {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid;
+}
+
+/* تلوين النقاط */
+#candy-kingdom .point { background-color: #ff006e; border-color: #ff006e; }
+#candy-kingdom .point-label { color: #ff006e; border-color: #ff006e; }
+
+#tree-fort .point { background-color: #06d6a0; border-color: #06d6a0; }
+#tree-fort .point-label { color: #06d6a0; border-color: #06d6a0; }
+
+#ice-kingdom .point { background-color: #118ab2; border-color: #118ab2; }
+#ice-kingdom .point-label { color: #118ab2; border-color: #118ab2; }
+
+#fire-kingdom .point { background-color: #ef476f; border-color: #ef476f; }
+#fire-kingdom .point-label { color: #ef476f; border-color: #ef476f; }
+
+#nightosphere .point { background-color: #7209b7; border-color: #7209b7; }
+#nightosphere .point-label { color: #7209b7; border-color: #7209b7; }
+
+/* لوحة المعلومات */
+.info-panel {
+    flex: 2;
+    min-width: 250px;
+    background: linear-gradient(145deg, #ffd6ff, #e7c6ff);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 4px solid #cdb4db;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #b8c0ff;
+}
+
+.panel-header h2 {
+    color: #7209b7;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    background: #ef476f;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #ff006e;
+    transform: rotate(90deg);
+}
+
+.default-message {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.default-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+}
+
+.fun-fact {
+    background-color: #ffd166;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* معلومات الموقع (سيتم عرضها عند النقر) */
+.location-info {
+    display: none;
+}
+
+.location-info.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.location-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.location-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.location-description {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.resident {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+}
+
+.resident-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* الفاصل الغريب */
+.weird-divider {
+    text-align: center;
+    margin: 30px 0;
+    padding: 15px;
+    background: linear-gradient(90deg, #ffafcc, #bde0fe, #ffafcc);
+    border-radius: 50px;
+    font-weight: bold;
+    color: #7209b7;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 0 white;
+}
+
+/* قسم الشخصيات */
+.favorites {
+    margin: 40px 0;
+}
+
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.character-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 3px solid transparent;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.character-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.character-card.finn { border-color: #06d6a0; }
+.character-card.jake { border-color: #ffd166; }
+.character-card.pb { border-color: #ff006e; }
+.character-card.ice-king { border-color: #118ab2; }
+
+.character-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    background-size: cover;
+    background-position: center;
+}
+
+.character-icon.finn { background-color: #06d6a0; }
+.character-icon.jake { background-color: #ffd166; }
+.character-icon.pb { background-color: #ff006e; }
+.character-icon.ice-king { background-color: #118ab2; }
+
+/* التذييل */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 3px dashed #a2d2ff;
+    color: #555;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* تأثيرات للشخصيات */
+.character-icon.finn::before {
+    content: "🗡️";
+    font-size: 2.5rem;
+    line-height: 80px;
+}
+
+.character-icon.jake::before {
+    content: "🐶";
+    font-size: 2.5rem;
+    line-height: 80px;
+}
+
+.character-icon.pb::before {
+    content: "👑";
+    font-size: 2.5rem;
+    line-height: 80px;
+}
+
+.character-icon.ice-king::before {
+    content: "🧊";
+    font-size: 2.5rem;
+    line-height: 80px;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    .map-container {
+        flex-direction: column;
+    }
+    
+    .map, .info-panel {
+        width: 100%;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .characters-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
