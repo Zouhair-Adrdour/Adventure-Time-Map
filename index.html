@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+    <!-- بعد الروابط الموجودة -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Comic+Neue:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>خريطة أرض أوو التفاعلية | Adventure Time</title>
@@ -8,7 +18,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <!-- قبل footer مباشرة -->
+<div class="floating-buttons">
+    <button class="treasure-hunt-btn" title="ابحث عن الكنوز">
+        <i class="fas fa-search"></i>
+        <span class="btn-text">ابحث عن الكنوز</span>
+    </button>
+    
+    <button class="profile-btn" title="الملف الشخصي">
+        <i class="fas fa-user"></i>
+        <span class="btn-text">الملف</span>
+    </button>
+    
+    <button class="stats-btn" title="الإحصائيات">
+        <i class="fas fa-chart-bar"></i>
+        <span class="btn-text">إحصاءات</span>
+    </button>
+    
+    <button class="share-btn" title="مشاركة">
+        <i class="fas fa-share-alt"></i>
+        <span class="btn-text">مشاركة</span>
+    </button>
+</div>
+<!-- بعد floating-buttons -->
+<div class="music-player">
+    <div class="player-controls">
+        <button class="prev-btn" title="السابق"><i class="fas fa-step-backward"></i></button>
+        <button class="play-btn" title="تشغيل/إيقاف"><i class="fas fa-play"></i></button>
+        <button class="next-btn" title="التالي"><i class="fas fa-step-forward"></i></button>
+        <select class="song-selector">
+            <option value="adventure">🎵 أغنية المغامرة</option>
+            <option value="marceline">🎸 أغنية مارسيلين</option>
+            <option value="candy">🍬 موسيقى مملكة الحلوى</option>
+        </select>
+        <div class="volume-control">
+            <i class="fas fa-volume-up"></i>
+            <input type="range" min="0" max="100" value="50" class="volume-slider">
+        </div>
+    </div>
+</div>
     <div class="container">
         <!-- العنوان الرئيسي -->
         <header>
@@ -17,6 +67,12 @@
         </header>
 
         <!-- الخريطة الرئيسية -->
+         <!-- داخل div class="map" -->
+<div class="map-controls">
+    <button class="zoom-in" title="تكبير"><i class="fas fa-plus"></i></button>
+    <button class="zoom-out" title="تصغير"><i class="fas fa-minus"></i></button>
+    <button class="reset-view" title="إعادة تعيين"><i class="fas fa-sync-alt"></i></button>
+</div>
         <div class="map-container">
             <div class="map" id="ooo-map">
                 <!-- النقاط التفاعلية على الخريطة -->
@@ -54,7 +110,8 @@
                 </div>
                 <div class="panel-content">
                     <div class="default-message">
-                        <img src="https://cdn-icons-png.flaticon.com/512/744/744922.png" alt="Adventure Time" class="default-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/744/744922.png" alt="Adventure Time"
+                            class="default-icon">
                         <h3>مرحباً في أرض أوو! 🌈</h3>
                         <p>اضغط على أي نقطة ملونة على الخريطة لتبدأ مغامرتك!</p>
                         <p class="fun-fact">حقيقة ممتعة: أرض أوو هي عالم ما بعد نهاية العالم، مليئة بالسحر والغرابة!</p>
@@ -100,11 +157,22 @@
 
         <!-- تذييل الصفحة -->
         <footer>
-            <p>موقع معجبين غير رسمي لـ Adventure Time | صنع بـ <i class="fas fa-heart"></i> ZOUHAIR ADRDOUR<i class="fas fa-crown"></i></p>
+            <p>موقع معجبين غير رسمي لـ Adventure Time | صنع بـ <i class="fas fa-heart"></i> ZOUHAIR ADRDOUR<i
+                    class="fas fa-crown"></i></p>
             <p class="copyright">جميع حقوق Adventure Time تعود لـ Pendleton Ward وCartoon Network</p>
         </footer>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
+<!-- أضف هذا في header بعد العنوان -->
+<div class="visitor-counter">
+    <i class="fas fa-users"></i>
+    <span id="visitor-count">0</span> مغامر في الخريطة
+</div>
+<button class="more-stats-btn" onclick="showDetailedStats()">
+    <i class="fas fa-chart-pie"></i>
+    <span>إحصائيات مفصلة</span>
+</button>
